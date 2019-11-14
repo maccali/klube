@@ -1,17 +1,18 @@
 {
-  "name": "modulo2",
+  "name": "klubebeck",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "sever.js",
   "scripts": {
     "dev": "nodemon src/server.js",
     "dev:debug": "nodemon --inspect src/server.js",
     "prod": "node -r esm src/server.js",
+    "prod-prod": "set NODE_ENV=production node -r esm src/server.js",
     "lint": "npx eslint",
     "queue": "nodemon src/queue.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Guilherme Maccali",
   "license": "ISC",
   "dependencies": {
     "@sentry/node": "^5.7.1",

@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  dbredis:
+    image: 'redis:alpine'
+    command: redis-server
+    ports:
+      - '6380:6379'
+  dbmongo:
+    image: 'mongo'
+    ports:
+      - '27018:27017'
+  dbpostgres:
+    image: 'postgres:11'
+    ports:
+      - '5433:5432'
+  api:
+    dns_search:
+      - .
+    build:
+      context: ./backend
+      dockerfile: ./DockerFile
+    ports:
+      - '3333:3333'
+    volumes: 
+      - ./backend:/usr/src/app
+    command: npm run dev
+
