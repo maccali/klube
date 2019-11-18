@@ -2,7 +2,7 @@
 class TestController {
   async index(req, res) {
 
-    return res.json({ message: "oi" });
+    return res.json({ message: "oieeeeeeee!" });
   }
 }
 
