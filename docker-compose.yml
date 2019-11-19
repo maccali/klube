@@ -9,6 +9,9 @@ services:
     image: 'postgres:11'
     ports:
       - '5433:5432'
+    volumes:
+      - ./data-postgresql:/var/lib/postgresql/data 
+    
   api:
     build:
       context: ./backend
@@ -23,5 +26,4 @@ services:
     depends_on:
       - dbmongo
       - dbpostgres
-    command: npm run dev
-
+    command: npm run dev  
