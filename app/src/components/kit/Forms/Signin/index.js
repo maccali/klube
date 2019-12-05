@@ -22,12 +22,12 @@ export default class Signin extends Component {
     pass: ""
   };
 
-  handleLogin = async() => {
+  handleLogin = async () => {
     const { navigation } = this.props;
     navigation.navigate('Main');
   };
 
-  handleRegister = async(props) => {
+  handleRegister = async (props) => {
     const { navigation } = props;
     navigation.navigate('Signup');
   };
@@ -55,6 +55,7 @@ export default class Signin extends Component {
             <Icon name="vpn-key" size={30} color="#7159c1" />
           </IconCont>
           <FormInput
+            secureTextEntry={true}
             value={pass}
             onChangeText={textPass => this.setState({ pass: textPass })}
           />
