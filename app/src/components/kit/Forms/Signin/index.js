@@ -6,6 +6,7 @@ import api from '../../../../services/api';
 
 import img from './img/logo.png';
 
+
 import {
   Container,
   FormInput,
@@ -40,7 +41,6 @@ export default class Signin extends Component {
     return (
       <Container>
         <Logo source={img} />
-
         <Box>
           <IconCont>
             <Icon name="email" size={30} color="#7159c1" />
