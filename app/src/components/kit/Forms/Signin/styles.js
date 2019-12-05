@@ -20,6 +20,7 @@ export const IconCont = styled.View`
   padding: 4px;
   margin-left: 15px;
   margin-right: 5px;
+  color: #7159c1;
 `;
 
 
@@ -34,23 +35,24 @@ export const FormInput = styled.TextInput`
   height: 50px;
 `;
 
-export const SubmitForm = styled(RectButton)`
+// export const Button = styled(RectButton)`
+export const Button = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   background: #eee;
   border-radius: 50px;
-  padding: 5px;
-  margin-right: 70px;
-  margin-left: 70px;
+  padding: 15px;
   margin-top: 20px;
+  border: 1px solid #7159c1;
   /* opacity: ${props => (props.loading ? 0.7 : 1)}; */
 `;
 
-// export const SubmitFormText = styled.Text`
-//   font-size: 14px;
-//   font-weight: bold;
-//   color: #fff;
-//   text-transform: uppercase;
-// `;
+export const ButtonText = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #7159c1;
+  text-transform: uppercase;
+
+`;
 
 

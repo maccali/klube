@@ -17,3 +17,5 @@ export const Event = styled.View`
   margin: 0 20px 30px;
 `;
 
+export const Text = styled.Text``
+

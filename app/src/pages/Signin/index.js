@@ -4,17 +4,22 @@ import { Container } from './styles';
 
 import { Events, Signin } from '../../components/index'
 
-export default class Main extends Component {
+export default class SigninPage extends Component {
 
 
   static navigationOptions = {
     title: 'Login',
   };
 
+  // componentDidMount(){
+  //   const { navigation } = this.props;
+  //   navigation.navigate('Signup');
+  // }
+
   render() {
     return (
       <Container>
-        <Signin />
+        <Signin props={this.props} />
       </Container>
     );
   }
