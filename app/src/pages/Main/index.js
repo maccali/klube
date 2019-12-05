@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
-import { Container } from './styles';
+import { Events } from '../../components'
 
-import { Events, Signin } from '../../components/index'
+import {
+  Container,
+} from './styles';
 
-export default class Main extends Component {
-
+export default class EventsPage extends Component {
 
   static navigationOptions = {
-    title: 'Login',
+    title: 'Eventos',
   };
 
   render() {
     return (
       <Container>
-        {/* <Signin /> */}
+          <Events props={this.props} />
       </Container>
     );
   }

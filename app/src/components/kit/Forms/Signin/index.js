@@ -23,8 +23,8 @@ export default class Signin extends Component {
     pass: ""
   };
 
-  handleLogin = async () => {
-    const { navigation } = this.props;
+  handleLogin = async (props) => {
+    const { navigation } = props;
     navigation.navigate('Main');
   };
 
