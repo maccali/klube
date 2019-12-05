@@ -2,22 +2,26 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Main from './pages/Main';
-import User from './pages/User';
+import Signin from './pages/Signin';
+// import Signup from './pages/Signup';
+// import NewEvent from './pages/NewEvent';
 
 const Routes = createAppContainer(
   createStackNavigator(
     {
+      Signin,
       Main,
-      User,
+      // Signup,
+      // NewEvent
     },
     {
       headerLayoutPreset: 'center',
       headerBackTitleVisible: false,
       defaultNavigationOptions: {
         headerStyle: {
-          backgroundColor: '#7159c1',
+          backgroundColor: '#aca6aa',
         },
-        headerTintColor: '#FFF',
+        headerTintColor: '#000',
       },
     }
   )

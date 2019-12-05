@@ -3,14 +3,16 @@ import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../../../services/api';
 
-import { Text } from 'react-native';
+
+import img from './img/logo.png';
 
 import {
   Container,
   FormInput,
-  FormLabel,
   SubmitForm,
-  SubmitFormText,
+  Logo,
+  Box,
+  IconCont,
 } from './styles';
 
 export default class Signin extends Component {
@@ -19,28 +21,34 @@ export default class Signin extends Component {
     pass: ""
   };
 
-  // static navigationOptions = {
-  //   title: 'Entrar',
-  // };
-
   render() {
 
     const { email, pass } = this.state;
 
     return (
       <Container>
-        <FormLabel>EMAIL:</FormLabel>
-        <FormInput
-          value={email}
-          onChangeText={textEmail => this.setState({ email: textEmail })}
-        />
-        <FormLabel>SENHA:</FormLabel>
-        <FormInput
-          value={pass}
-          onChangeText={textPass => this.setState({ pass: textPass })}
-        />
+        <Logo source={img} />
+
+        <Box>
+          <IconCont>
+            <Icon name="email" size={30} color="#aca6aa" />
+          </IconCont>
+          <FormInput
+            value={email}
+            onChangeText={textEmail => this.setState({ email: textEmail })}
+          />
+        </Box>
+        <Box>
+          <IconCont>
+            <Icon name="vpn-key" size={30} color="#aca6aa" />
+          </IconCont>
+          <FormInput
+            value={pass}
+            onChangeText={textPass => this.setState({ pass: textPass })}
+          />
+        </Box>
         <SubmitForm onPress={() => this.handleCheckin()}>
-          <SubmitFormText> Entrar </SubmitFormText>
+          <Icon name="keyboard-arrow-right" size={60} color="#aca6aaff" />
         </SubmitForm>
       </Container>
     );

@@ -8,13 +8,13 @@ export default class Main extends Component {
 
 
   static navigationOptions = {
-    title: 'Eventos',
+    title: 'Login',
   };
 
   render() {
     return (
       <Container>
-        <Signin />
+        {/* <Signin /> */}
       </Container>
     );
   }
