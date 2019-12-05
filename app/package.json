@@ -3,10 +3,11 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "start": "react-native start",
+    "android": "react-native run-android",
     "android:cache": "react-native run-android -- --reset-cache",
+    "gradlew:clean": "cd android && gradlew clean && cd .. && react-native run-android",
+    "ios": "react-native run-ios",
     "ios:cache": "react-native run-ios -- --reset-cache",
     "reanimate": "npm start -- --reset-cache",
     "reanimate:force": "rm -rf node_modules & npm install & npm start -- --reset-cache",

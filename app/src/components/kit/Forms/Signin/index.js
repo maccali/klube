@@ -13,7 +13,7 @@ import {
   SubmitFormText,
 } from './styles';
 
-export default class Main extends Component {
+export default class Signin extends Component {
   state = {
     email: "",
     pass: ""
@@ -24,6 +24,9 @@ export default class Main extends Component {
   // };
 
   render() {
+
+    const { email, pass } = this.state;
+
     return (
       <Container>
         <FormLabel>EMAIL:</FormLabel>
