@@ -46,6 +46,7 @@ export default class Signin extends Component {
             <Icon name="email" size={30} color="#7159c1" />
           </IconCont>
           <FormInput
+            placeholder="Email"
             value={email}
             onChangeText={textEmail => this.setState({ email: textEmail })}
           />
@@ -55,6 +56,7 @@ export default class Signin extends Component {
             <Icon name="vpn-key" size={30} color="#7159c1" />
           </IconCont>
           <FormInput
+            placeholder="Senha"
             secureTextEntry={true}
             value={pass}
             onChangeText={textPass => this.setState({ pass: textPass })}
