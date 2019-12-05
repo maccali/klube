@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Events } from '../../components'
+import { Menu, Events } from '../../components'
 
 import {
   Container,
@@ -15,7 +15,8 @@ export default class EventsPage extends Component {
   render() {
     return (
       <Container>
-          <Events props={this.props} />
+        <Events props={this.props} />
+        <Menu props={this.props} />
       </Container>
     );
   }

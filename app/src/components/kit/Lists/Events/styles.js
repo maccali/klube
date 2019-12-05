@@ -3,6 +3,8 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
+  padding-right: 20px;
+  padding-left: 20px;
 `;
 
 export const List = styled.FlatList.attrs({
