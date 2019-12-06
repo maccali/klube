@@ -16,7 +16,7 @@ export default class Menu extends Component {
 
   handleAdd = async (props) => {
     const { navigation } = props;
-    navigation.navigate('NewEvent');
+    navigation.navigate('SelectLocal');
   };
 
   render() {

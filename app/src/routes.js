@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Main from './pages/Main';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
+import SelectLocal from './pages/SelectLocal';
 import NewEvent from './pages/NewEvent';
 
 const Routes = createAppContainer(
@@ -12,6 +13,7 @@ const Routes = createAppContainer(
       Signin,
       Main,
       Signup,
+      SelectLocal,
       NewEvent
     },
     {

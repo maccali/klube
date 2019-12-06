@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 
-import { NewEvent } from '../../components'
+import { SelectLocal } from '../../components'
 
 import {
   Container,
 } from './styles';
 
-export default class SignupPage extends Component {
+export default class SelectLocalPage extends Component {
 
   static navigationOptions = {
-    title: 'Novo Evento',
+    title: 'Selecione o local',
   };
 
   render() {
     return (
       <Container>
-          <NewEvent props={this.props}/>
+          <SelectLocal props={this.props}/>
       </Container>
     );
   }
