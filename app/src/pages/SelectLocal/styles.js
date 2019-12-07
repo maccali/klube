@@ -1,19 +1,35 @@
 import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
+
 export const Container = styled.View`
-  flex: 1;
-  padding: 30px;
+  background-color: #fff;
+  padding: 10px;
 `;
 
-export const List = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
-})`
-  margin-top: 20px;
-`;
+export const Title = styled.Text`
+    font-size: 22px;
+    margin-bottom: 40px;
+`
 
-export const Event = styled.View`
+// export const Button = styled(RectButton)`
+export const Button = styled.TouchableOpacity`
+  justify-content: center;
   align-items: center;
-  margin: 0 20px 30px;
+  background: #eee;
+  border-radius: 30px;
+  padding-top: 25px;
+  border: 1px solid #7159c1;
+  margin-bottom: 45px;
 `;
+
+export const ButtonText = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #7159c1;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 30px;
+`;
+
 

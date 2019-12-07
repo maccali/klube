@@ -1,7 +1,9 @@
-// KIT
-export { default as Signin } from './kit/Forms/Signin';
-export { default as Signup } from './kit/Forms/Signup';
+// Menus
 export { default as Menu } from './kit/Menu';
-export { default as Events } from './kit/Lists/Events';
-export { default as SelectLocal } from './kit/Forms/SelectLocal';
-export { default as NewEvent } from './kit/Forms/NewEvent';
+
+// Buttons
+
+// Inputs
+
+// Images
+
