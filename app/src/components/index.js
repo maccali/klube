@@ -5,5 +5,5 @@ export { default as Menu } from './kit/Menu';
 
 // Inputs
 
-// Images
+
 

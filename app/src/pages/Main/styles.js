@@ -3,14 +3,14 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
-  padding-right: 20px;
-  padding-left: 20px;
 `;
 
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
 })`
   margin-top: 1px;
+  padding-right: 20px;
+  padding-left: 20px;
 `;
 
 export const Event = styled.TouchableOpacity`
@@ -21,7 +21,7 @@ export const Event = styled.TouchableOpacity`
   border-bottom-color: #eee;
 `;
 
-export const Image = styled.Image`
+export const Logo = styled.Image`
   width: 60px;
   height: 60px;
   margin-top: 15px;

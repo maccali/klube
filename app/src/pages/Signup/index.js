@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import img from './img/logo.png';
-
+import img from '../../Images/logo.png';
 
 import {
   Container,

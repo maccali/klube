@@ -5,7 +5,7 @@ import {
   Container,
   List,
   Event,
-  Image,
+  Logo,
   View,
   Name,
   Data,
@@ -14,6 +14,9 @@ import {
   Distance,
   DistanceText
 } from './styles';
+
+import { Menu } from '../../components'
+
 
 export default class Events extends Component {
   state = {
@@ -61,7 +64,7 @@ export default class Events extends Component {
           keyExtractor={event => event.id}
           renderItem={({ item }) => (
             <Event onPress={() => this.handleNavigate(item)}>
-              <Image source={require('./img/e.png')} />
+              <Logo source={require("../../Images/e.png")} />
               <View>
                 <Name>{item.name}</Name>
                 <Description>
@@ -80,7 +83,8 @@ export default class Events extends Component {
             </Event>
           )}
         />
-      </Container>
+        <Menu />
+      </Container >
     );
   }
 }
