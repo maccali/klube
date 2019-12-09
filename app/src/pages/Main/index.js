@@ -39,15 +39,6 @@ export default class Events extends Component {
     title: 'Eventos',
   };
 
-  async componentDidMount() {
-    // const response = await apiIncricao.get('/events');
-    // this.setState({ events: response.data })
-  }
-
-  handleAddUser = async () => {
-
-  };
-
   handleNavigate = checkin => {
     const { navigation } = this.props;
     console.log(checkin);
@@ -56,6 +47,7 @@ export default class Events extends Component {
 
   render() {
     const { events } = this.state;
+
 
     return (
       <Container>
@@ -83,7 +75,7 @@ export default class Events extends Component {
             </Event>
           )}
         />
-        <Menu />
+        <Menu navigation={this.props.navigation}/>
       </Container >
     );
   }

@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   width: 100%;
@@ -14,6 +13,17 @@ export const ItemMenu = styled.TouchableOpacity`
   background-color: #7159c1;
   justify-content: center;
   align-items: center;
+  /* width: 150px; */
+  width: 50%;
+  border-left-width: 1px;
+  border-left-color: #fff;
 `
+
+export const List = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+  horizontal: true,
+})`
+  margin-top: 1px;
+`;
 
 

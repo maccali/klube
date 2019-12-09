@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Text } from 'react-native'
 
+
+import {Dimensions } from "react-native";
+
 import {
   Container,
 } from './styles';
@@ -15,15 +18,12 @@ export default class NewEvent extends Component {
   };
 
   componentDidMount() {
-    const { navigation } = this.props.children;
+    const { navigation } = this.props;
     const local = navigation.getParam('local');
-
+    console.log(local);
   }
 
   render() {
-
-    const { props } = this.props
-
     return (
       <Container>
         <Text>Novo evento</Text>

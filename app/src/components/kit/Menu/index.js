@@ -5,29 +5,29 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
   ItemMenu,
+  List,
 } from './styles';
 
 export default class Menu extends Component {
 
-  handleSearch = async (props) => {
-    // const { navigation } = this.props;
-    // navigation.navigate('Main');
+  handleSearch = async () => {
+
   };
 
-  handleAdd = async (props) => {
-    const { navigation } = props;
-    navigation.navigate('SelectLocal');
+  handleAdd = async () => {
+    this.props.navigation.navigate('SelectLocal');
   };
 
   render() {
-    const { props } = this.props
+    const { navigation } = this.props
+
 
     return (
       <Container>
-        <ItemMenu  onPress={() => this.handleSearch(props)}>
+        <ItemMenu onPress={() => this.handleSearch()}>
           <Icon name="search" size={30} color="#fff" />
         </ItemMenu>
-        <ItemMenu  onPress={() => this.handleAdd(props)}>
+        <ItemMenu onPress={() => this.handleAdd(navigation)}>
           <Icon name="add" size={30} color="#fff" />
         </ItemMenu>
       </Container>

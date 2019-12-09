@@ -21,14 +21,14 @@ export default class SelectLocal extends Component {
     title: 'Selecione o local',
   };
 
-  handleNewEventLocal = async (props) => {
-    const { navigation } = props;
+  handleNewEventLocal = async () => {
+    const { navigation } = this.props;
     const local = true;
     navigation.navigate('NewEvent', { local });
   };
 
   handleNewEventOther = async () => {
-    const { navigation } = props;
+    const { navigation } = this.props;
     const local = false;
     navigation.navigate('NewEvent', { local });
   };
@@ -42,13 +42,13 @@ export default class SelectLocal extends Component {
     return (
       <Container>
         <Title>Aonde o evento irá ocorrer?</Title>
-        <Button onPress={() => this.handleNewEventLocal(props)}>
+        <Button onPress={() => this.handleNewEventLocal()}>
           <Icon name="location-searching" size={60} color="#7159c1" />
           <ButtonText>
             Neste Local
           </ButtonText>
         </Button>
-        <Button onPress={() => this.handleNewEventOther(props)}>
+        <Button onPress={() => this.handleNewEventOther()}>
           <Icon name="map" size={60} color="#7159c1" />
           <ButtonText>
             Em outro local
