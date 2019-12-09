@@ -4,7 +4,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   background-color: #fff;
-  padding: 10px;
+  padding: 40px;
 `;
 
 export const Title = styled.Text`
