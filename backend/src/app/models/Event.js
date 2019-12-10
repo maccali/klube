@@ -10,7 +10,6 @@ class Event extends Model {
         local_name: Sequelize.STRING,
         geolocation: Sequelize.STRING,
         date: Sequelize.DATE,
-        path: Sequelize.STRING,
         url: {
           type: Sequelize.VIRTUAL,
           get() {
@@ -27,8 +26,8 @@ class Event extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
-    this.belongsTo(models.User, { foreignKey: 'owner_id', as: 'owner' });
+    this.belongsTo(models.File, { foreignKey: 'image_id', as: 'image' });
+    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
   }
 }
 

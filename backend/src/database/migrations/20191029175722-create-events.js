@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('appointments', {
+    return queryInterface.createTable('events', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -11,19 +11,37 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      local: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      local_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      geolocation: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: true,
       },
-      provider_id: {
+      image_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'files', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: true,
+      },
+      description: {
+        type: Sequelize.TEXT,
       },
       canceled_at: {
         type: Sequelize.DATE,
@@ -40,6 +58,7 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('appointments');
+    return queryInterface.dropTable('events');
   },
 };
+
