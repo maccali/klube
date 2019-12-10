@@ -6,6 +6,7 @@ import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import SelectLocal from './pages/SelectLocal';
 import NewEvent from './pages/NewEvent';
+import Camera from './pages/Camera';
 
 const Routes = createAppContainer(
   createStackNavigator(
@@ -14,7 +15,8 @@ const Routes = createAppContainer(
       Main,
       Signup,
       SelectLocal,
-      NewEvent
+      NewEvent,
+      Camera
     },
     {
       headerLayoutPreset: 'center',
