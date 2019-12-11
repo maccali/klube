@@ -21,19 +21,7 @@ import { Menu } from '../../components'
 
 export default class Events extends Component {
   state = {
-    events: [
-      { id: 1, name: "Futebol dos Amigos", data: "06/12", distance: "600 m" },
-      { id: 2, name: "Clube do Xadrez", data: "06/12", distance: "1 km" },
-      { id: 3, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 4, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 5, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 6, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 7, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 8, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 9, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 10, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-      { id: 11, name: "Clube do Estudos", data: "10/12", distance: "3 km" },
-    ]
+    events: []
   };
 
   static navigationOptions = {
@@ -41,13 +29,12 @@ export default class Events extends Component {
   };
 
   async componentDidMount(){
+    const response = await api.get('/events');
 
-    const response = await api.get('/events', {
-
+    this.setState({
+      events: response.data,
     })
 
-    console.log('response')
-    console.log(response)
   }
 
   handleNavigate = checkin => {
@@ -72,12 +59,14 @@ export default class Events extends Component {
                 <Description>
                   <Data>
                     <DataText>
-                      {item.data}
+                      06/12
+                      {/* {item.data} */}
                     </DataText>
                   </Data>
                   <Distance>
                     <DistanceText>
-                      {item.distance}
+                      600m
+                      {/* {item.distance} */}
                     </DistanceText>
                   </Distance>
                 </Description>
