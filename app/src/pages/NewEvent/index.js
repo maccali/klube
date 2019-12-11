@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { RNCamera } from 'react-native-camera';
 import Geolocation from '@react-native-community/geolocation';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import Data from '../../helpers/Date';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Text } from 'react-native'
@@ -28,6 +29,9 @@ export default class NewEvent extends Component {
     eventName: '',
     localName: '',
     description: '',
+    dateField: '',
+    timeField: '',
+
     where: { lat: null, lng: null },
     error: null,
     date: new Date('2020-06-12T14:42:42'),
@@ -71,6 +75,8 @@ export default class NewEvent extends Component {
     date = date || this.state.date;
 
     this.setState({
+      dateField: Data.formatDateEventForm(date),
+      timeField: Data.formatTimeEventForm(date),
       show: Platform.OS === 'ios' ? true : false,
       date,
     });
@@ -91,15 +97,18 @@ export default class NewEvent extends Component {
     this.show('time');
   }
 
+  cameraCall = () => {
+
+  }
 
   render() {
 
-    const { photo, eventName, localName, description, show, date, mode } = this.state;
+    const { photo, eventName, localName, description, show, date, mode, dateField, timeField} = this.state;
 
     return (
       <Container>
 
-        <ButtonPhoto onPress={() => this.handleNewEventLocal()}>
+        <ButtonPhoto onPress={() => this.cameraCall()}>
           <Icon name="camera" size={60} color="#7159c1" />
           <ButtonText>Tirar Foto</ButtonText>
         </ButtonPhoto>
@@ -155,10 +164,10 @@ export default class NewEvent extends Component {
           </IconCont>
           <FormInputMultiline
             placeholder="Data do evento"
-            value={description}
+            value={dateField}
             multiline={true}
             editable={false}
-            onChangeText={textDescription => this.setState({ description: textDescription })}
+            onChangeText={textDateField => this.setState({ dateField: textDateField })}
           />
         </BoxPicker>
 
@@ -168,10 +177,10 @@ export default class NewEvent extends Component {
           </IconCont>
           <FormInputMultiline
             placeholder="Hora do evento"
-            value={description}
+            value={timeField}
             multiline={true}
             editable={false}
-            onChangeText={textDescription => this.setState({ description: textDescription })}
+            onChangeText={textTimeField => this.setState({ timeField: textTimeField })}
           />
         </BoxPicker>
 
