@@ -14,7 +14,7 @@ import {
   FormInput,
   FormInputMultiline,
   BoxPicker,
-  ButtonPicker,
+  ButtonPhoto,
   ButtonText
 } from './styles';
 
@@ -98,11 +98,11 @@ export default class NewEvent extends Component {
 
     return (
       <Container>
-        <Text>Fotinho</Text>
-        <Text>Nome Evento</Text>
-        <Text>Nove do local</Text>
-        <Text>Data do evento</Text>
-        <Text>Descrição</Text>
+
+        <ButtonPhoto onPress={() => this.handleNewEventLocal()}>
+          <Icon name="camera" size={60} color="#7159c1" />
+          <ButtonText>Tirar Foto</ButtonText>
+        </ButtonPhoto>
 
         <Box>
           <IconCont>

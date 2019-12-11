@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 
-export const Container = styled.KeyboardAvoidingView`
+export const Container = styled.ScrollView`
   background-color: #fff;
   padding: 30px;
 `;
@@ -27,6 +27,7 @@ export const ButtonText = styled.Text`
   font-weight: bold;
   color: #7159c1;
   text-transform: uppercase;
+  margin-top: 15px;
 `;
 
 export const Box = styled.View`
@@ -78,3 +79,11 @@ export const ButtonPicker = styled.TouchableOpacity`
 `;
 
 
+export const ButtonPhoto = styled.TouchableOpacity`
+  /* margin: auto; */
+  align-items: center;
+  background: #eee;
+  border-radius: 70px;
+  padding: 20px;
+  border: 1px solid #7159c1;
+`;
