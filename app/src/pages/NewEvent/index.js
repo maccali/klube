@@ -8,6 +8,10 @@ import { Text } from 'react-native'
 
 import {
   Container,
+  Box,
+  IconCont,
+  FormInput,
+  FormInputMultiline
 } from './styles';
 
 export default class NewEvent extends Component {
@@ -16,61 +20,92 @@ export default class NewEvent extends Component {
     title: 'Novo Evento',
   };
 
-  state = {
-    where: {lat: null, lng: null},
-    error: null
-  }
+
 
   componentDidMount() {
     const { navigation } = this.props;
     const local = navigation.getParam('local');
     if (local) {
+      // Get Geolocation
+      let geoOptions = {
+        enableHighAccuracy: true,
+        timeOut: 20000,
+        maximumAge: 60 * 60 * 24
+      }
 
-        let geoOptions = {
-          enableHighAccuracy: true,
-          timeOut: 20000,
-          maximumAge: 60 * 60 * 24
-        }
-
-        // navigator.geolocation.getCurrentPosition(this.geoSuccess, this.geoFailure, geoOptions)
-
-        Geolocation.setRNConfiguration(geoOptions);
-        Geolocation.getCurrentPosition(info => console.log(info));
-
+      Geolocation.setRNConfiguration(geoOptions);
+      Geolocation.getCurrentPosition(info => console.log(info));
     } else {
 
     }
   }
 
   geoSuccess = (position) => {
-      console.log(position)
-    }
+    console.log(position)
+  }
 
-    geoFailure = (err) => {
-      console.log(err)
+  geoFailure = (err) => {
+    console.log(err)
 
   }
 
+  state = {
+    photo: '',
+    eventName: '',
+    localName: '',
+    description: '',
+    where: { lat: null, lng: null },
+    error: null
+  }
+
   render() {
+
+    const { photo, eventName, localName, description } = this.state;
+
     return (
-      <RNCamera
-        ref={camera => { this.camera = camera }}
-        // style={styles.preview}
-        type={RNCamera.Constants.Type.back}
-        autoFocus={RNCamera.Constants.AutoFocus.on}
-        flashMode={RNCamera.Constants.FlashMode.off}
-        captureAudio={false}
-        androidCameraPermissionOptions={{
-          title: 'Permission to use camera',
-          message: 'We need your permission to use your camera',
-          buttonPositive: 'Ok',
-          buttonNegative: 'Cancel',
-        }}
-        androidRecordAudioPermissionOptions={false}
-      />
-      // <Container>
-      //   <Text>Novo evento</Text>
-      // </Container>
+      <Container>
+        <Text>Fotinho</Text>
+        <Text>Nome Evento</Text>
+        <Text>Nove do local</Text>
+        <Text>Data do evento</Text>
+        <Text>Descrição</Text>
+
+        <Box>
+          <IconCont>
+            <Icon name="stars" size={30} color="#7159c1" />
+          </IconCont>
+          <FormInput
+            placeholder="Nome do Evento"
+            value={eventName}
+            multiline={true}
+            onChangeText={textEventName => this.setState({ eventName: textEventName })}
+          />
+        </Box>
+        <Box>
+          <IconCont>
+            <Icon name="local-pizza" size={30} color="#7159c1" />
+          </IconCont>
+          <FormInput
+            placeholder="Nome do local"
+            value={localName}
+            multiline={true}
+            onChangeText={textLocalName => this.setState({ localName: textLocalName })}
+          />
+        </Box>
+        <Box>
+          <IconCont>
+            <Icon name="view-headline" size={30} color="#7159c1" />
+          </IconCont>
+          <FormInputMultiline
+            placeholder="Descreva o evento"
+            value={description}
+            multiline={true}
+            onChangeText={textDescription => this.setState({ description: textDescription })}
+          />
+        </Box>
+
+
+      </Container>
     );
   }
 }
