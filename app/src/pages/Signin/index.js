@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../services/api'
 import img from '../../Images/logo.png';
+import auth from '../../helpers/Auth';
 
 import { ModalError } from '../../components'
 
@@ -22,7 +22,7 @@ import {
 export default class Signin extends Component {
   state = {
     email: "guimaccali@gmail.com",
-    password: "12345",
+    password: "123456",
     modal: false,
     errorMessage: '',
   };
@@ -39,21 +39,16 @@ export default class Signin extends Component {
     })
       .then(async (response) => {
 
-        await AsyncStorage.setItem('token', response.data.token);
+        await auth.setToken(response.data.token);
 
         const { navigation } = this.props;
         navigation.navigate('Main');
       })
       .catch(error => {
-        console.log('???????????????????????????????????????????????')
-        console.log(error )
 
         this.showModal();
-
         // TODO limpar campos
-        // if(error.response.status )
       });
-
   };
 
   handleRegister = async () => {
@@ -77,7 +72,6 @@ export default class Signin extends Component {
   render() {
 
     const { email, password, errorMessage } = this.state;
-
     const modal = <ModalError text={errorMessage} closeModal={this.closeModal.bind(this)} />
 
     return (
@@ -118,8 +112,6 @@ export default class Signin extends Component {
             Cadastrar
           </ButtonText>
         </Button>
-
-
       </Container>
     );
   }

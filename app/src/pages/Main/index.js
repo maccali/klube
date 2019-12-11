@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import api from '../../services/api'
 
 import {
   Container,
@@ -41,8 +41,13 @@ export default class Events extends Component {
   };
 
   async componentDidMount(){
-    const test = await AsyncStorage.getItem('token');
-    console.log(test)
+
+    const response = await api.get('/events', {
+
+    })
+
+    console.log('response')
+    console.log(response)
   }
 
   handleNavigate = checkin => {
@@ -53,7 +58,6 @@ export default class Events extends Component {
 
   render() {
     const { events } = this.state;
-
 
     return (
       <Container>
