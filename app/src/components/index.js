@@ -9,3 +9,4 @@ export { default as ModalError } from './kit/Modal/ModalError';
 // Inputs
 
 
+export { default as Camera } from './kit//Camera';

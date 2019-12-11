@@ -25,7 +25,8 @@ export default class SelectLocal extends Component {
     const { navigation } = this.props;
     const local = true;
     // navigation.navigate('NewEvent', { local });
-    navigation.navigate('Camera');
+    // navigation.navigate('Camera');
+    navigation.navigate('NewEvent', { local });
   };
 
   handleNewEventOther = async () => {
