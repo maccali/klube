@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { RNCamera } from 'react-native-camera';
 import Geolocation from '@react-native-community/geolocation';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Text } from 'react-native'
@@ -11,15 +12,32 @@ import {
   Box,
   IconCont,
   FormInput,
-  FormInputMultiline
+  FormInputMultiline,
+  BoxPicker,
+  ButtonPicker,
+  ButtonText
 } from './styles';
 
+import { View, Button, Platform } from 'react-native';
+
+
 export default class NewEvent extends Component {
+
+  state = {
+    photo: '',
+    eventName: '',
+    localName: '',
+    description: '',
+    where: { lat: null, lng: null },
+    error: null,
+    date: new Date('2020-06-12T14:42:42'),
+    mode: 'date',
+    show: false,
+  }
 
   static navigationOptions = {
     title: 'Novo Evento',
   };
-
 
 
   componentDidMount() {
@@ -49,18 +67,34 @@ export default class NewEvent extends Component {
 
   }
 
-  state = {
-    photo: '',
-    eventName: '',
-    localName: '',
-    description: '',
-    where: { lat: null, lng: null },
-    error: null
+  setDate = (event, date) => {
+    date = date || this.state.date;
+
+    this.setState({
+      show: Platform.OS === 'ios' ? true : false,
+      date,
+    });
   }
+
+  show = mode => {
+    this.setState({
+      show: true,
+      mode,
+    });
+  }
+
+  datepicker = () => {
+    this.show('date');
+  }
+
+  timepicker = () => {
+    this.show('time');
+  }
+
 
   render() {
 
-    const { photo, eventName, localName, description } = this.state;
+    const { photo, eventName, localName, description, show, date, mode } = this.state;
 
     return (
       <Container>
@@ -104,6 +138,49 @@ export default class NewEvent extends Component {
           />
         </Box>
 
+
+        {/* <BoxPicker>
+          <ButtonPicker onPress={this.datepicker}>
+            <Icon name="event" size={30} color="#7159c1" />
+          </ButtonPicker>
+
+          <ButtonPicker onPress={this.timepicker}>
+            <Icon name="access-time" size={30} color="#7159c1" />
+          </ButtonPicker>
+        </BoxPicker> */}
+
+        <BoxPicker onPress={this.datepicker}>
+          <IconCont>
+            <Icon name="event" size={30} color="#7159c1" />
+          </IconCont>
+          <FormInputMultiline
+            placeholder="Data do evento"
+            value={description}
+            multiline={true}
+            editable={false}
+            onChangeText={textDescription => this.setState({ description: textDescription })}
+          />
+        </BoxPicker>
+
+        <BoxPicker onPress={this.timepicker}>
+          <IconCont>
+            <Icon name="access-time" size={30} color="#7159c1" />
+          </IconCont>
+          <FormInputMultiline
+            placeholder="Hora do evento"
+            value={description}
+            multiline={true}
+            editable={false}
+            onChangeText={textDescription => this.setState({ description: textDescription })}
+          />
+        </BoxPicker>
+
+        {show && <DateTimePicker value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={this.setDate} />
+        }
 
       </Container>
     );

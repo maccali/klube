@@ -54,6 +54,27 @@ export const FormInput = styled.TextInput`
 
 export const FormInputMultiline = styled.TextInput`
   flex: 1;
-  /* height: 300px; */
-  align-items: flex-start
+  align-items: flex-start;
 `;
+
+export const BoxPicker = styled.TouchableOpacity`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background: #eee;
+  margin-top: 25px;
+  padding-right: 20px;
+`;
+
+export const ButtonPicker = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  border-radius: 50px;
+  padding: 15px;
+  margin-top: 20px;
+  border: 1px solid #7159c1;
+`;
+
+
