@@ -63,16 +63,22 @@ export default class Signin extends Component {
 
   showModal = () => {
     this.setState({
-      modal: !this.state.modal,
+      modal: true,
       errorMessage: 'Usuário ou senha incorretos'
     });
   };
+
+  closeModal = () => {
+    this.setState({
+      modal: false,
+    });
+  }
 
   render() {
 
     const { email, password, errorMessage } = this.state;
 
-    const modal = <ModalError text={errorMessage} showModal={this.showModal.bind(this)} />
+    const modal = <ModalError text={errorMessage} closeModal={this.closeModal.bind(this)} />
 
     return (
       <Container>

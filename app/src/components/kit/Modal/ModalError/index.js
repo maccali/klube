@@ -11,19 +11,16 @@ import {
 
 export default class ModalError extends Component {
 
-  closeModal() {
-    this.props.showModal()
-  }
-
   render() {
 
     const { text } = this.props;
+
     return (
       <Container>
         <ModalContainer>
         <Text>{text}</Text>
         </ModalContainer>
-        <Button onPress={() => this.closeModal()}>
+        <Button onPress={() => this.props.closeModal()}>
           <Icon name="close" size={18} color="#fff" />
         </Button>
       </Container>
