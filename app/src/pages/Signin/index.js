@@ -1,37 +1,11 @@
-// import React, { Component } from 'react';
-
-// import { Container } from './styles';
-
-// import { Events, Signin } from '../../components/index'
-
-// export default class SigninPage extends Component {
-
-
-//   static navigationOptions = {
-//     title: 'Login',
-//   };
-
-//   // componentDidMount(){
-//   //   const { navigation } = this.props;
-//   //   navigation.navigate('Signup');
-//   // }
-
-//   render() {
-//     return (
-//       <Container>
-//         <Signin props={this.props} />
-//       </Container>
-//     );
-//   }
-// }
-
 
 import React, { Component } from 'react';
-
+import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
-
+import api from '../../services/api'
 import img from '../../Images/logo.png';
+
+import { ModalError } from '../../components'
 
 import {
   Container,
@@ -47,8 +21,10 @@ import {
 
 export default class Signin extends Component {
   state = {
-    email: "",
-    pass: ""
+    email: "guimaccali@gmail.com",
+    password: "12345",
+    modal: false,
+    errorMessage: '',
   };
 
   static navigationOptions = {
@@ -56,8 +32,28 @@ export default class Signin extends Component {
   };
 
   handleLogin = async () => {
-    const { navigation } = this.props;
-    navigation.navigate('Main');
+    const { email, password } = this.state;
+
+    api.post('/sessions', {
+      email, password
+    })
+      .then(async (response) => {
+
+        await AsyncStorage.setItem('token', response.data.token);
+
+        const { navigation } = this.props;
+        navigation.navigate('Main');
+      })
+      .catch(error => {
+        console.log('???????????????????????????????????????????????')
+        console.log(error )
+
+        this.showModal();
+
+        // TODO limpar campos
+        // if(error.response.status )
+      });
+
   };
 
   handleRegister = async () => {
@@ -65,12 +61,22 @@ export default class Signin extends Component {
     navigation.navigate('Signup');
   };
 
+  showModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+      errorMessage: 'Usuário ou senha incorretos'
+    });
+  };
+
   render() {
 
-    const { email, pass } = this.state;
+    const { email, password, errorMessage } = this.state;
+
+    const modal = <ModalError text={errorMessage} showModal={this.showModal.bind(this)} />
 
     return (
       <Container>
+
         <Logo source={img} />
         <Box>
           <IconCont>
@@ -89,10 +95,13 @@ export default class Signin extends Component {
           <FormInput
             placeholder="Senha"
             secureTextEntry={true}
-            value={pass}
-            onChangeText={textPass => this.setState({ pass: textPass })}
+            value={password}
+            onChangeText={textPass => this.setState({ password: textPass })}
           />
         </Box>
+
+        {this.state.modal ? modal: null}
+
         <Button onPress={() => this.handleLogin()}>
           <ButtonText>
             Entrar
@@ -103,6 +112,8 @@ export default class Signin extends Component {
             Cadastrar
           </ButtonText>
         </Button>
+
+
       </Container>
     );
   }

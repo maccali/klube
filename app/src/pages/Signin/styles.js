@@ -17,18 +17,6 @@ export const Event = styled.View`
   margin: 0 20px 30px;
 `;
 
-
-
-
-// import styled from 'styled-components/native';
-// import { RectButton } from 'react-native-gesture-handler';
-
-
-// export const Container = styled.View`
-//   background-color: #fff;
-//   padding: 10px;
-// `;
-
 export const Box = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -76,5 +64,4 @@ export const ButtonText = styled.Text`
   text-transform: uppercase;
 
 `;
-
 

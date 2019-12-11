@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   Container,
@@ -38,6 +39,11 @@ export default class Events extends Component {
   static navigationOptions = {
     title: 'Eventos',
   };
+
+  async componentDidMount(){
+    const test = await AsyncStorage.getItem('token');
+    console.log(test)
+  }
 
   handleNavigate = checkin => {
     const { navigation } = this.props;
