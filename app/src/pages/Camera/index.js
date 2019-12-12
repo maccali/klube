@@ -6,8 +6,6 @@ import {
   Container,
 } from './styles';
 
-
-
 export default class CameraPage extends Component {
 
   render() {

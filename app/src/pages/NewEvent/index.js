@@ -1,12 +1,14 @@
 
 import React, { Component } from 'react';
-import { RNCamera } from 'react-native-camera';
 import Geolocation from '@react-native-community/geolocation';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Data from '../../helpers/Date';
+import AsyncStorage from '@react-native-community/async-storage';
+
+
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Text } from 'react-native'
+import { Camera } from '../../components'
 
 import {
   Container,
@@ -19,7 +21,7 @@ import {
   ButtonText
 } from './styles';
 
-import { View, Button, Platform } from 'react-native';
+import { Platform } from 'react-native';
 
 
 export default class NewEvent extends Component {
@@ -62,6 +64,12 @@ export default class NewEvent extends Component {
     }
   }
 
+  async componentWillUnmount(){
+    // console.log(this.state);
+    // console.log(JSON.stringify(this.state));
+    await AsyncStorage.setItem('newEvent', JSON.stringify(this.state))
+  }
+
   geoSuccess = (position) => {
     console.log(position)
   }
@@ -98,7 +106,8 @@ export default class NewEvent extends Component {
   }
 
   cameraCall = () => {
-
+    const { navigation } = this.props;
+    navigation.navigate('Camera');
   }
 
   render() {
@@ -146,17 +155,6 @@ export default class NewEvent extends Component {
             onChangeText={textDescription => this.setState({ description: textDescription })}
           />
         </Box>
-
-
-        {/* <BoxPicker>
-          <ButtonPicker onPress={this.datepicker}>
-            <Icon name="event" size={30} color="#7159c1" />
-          </ButtonPicker>
-
-          <ButtonPicker onPress={this.timepicker}>
-            <Icon name="access-time" size={30} color="#7159c1" />
-          </ButtonPicker>
-        </BoxPicker> */}
 
         <BoxPicker onPress={this.datepicker}>
           <IconCont>

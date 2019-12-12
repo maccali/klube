@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const CameraContainer = styled.View`
   flex: 1;
   flex-direction: column;
-  background-color: black;
+
 `
 
 export const View = styled.View`
