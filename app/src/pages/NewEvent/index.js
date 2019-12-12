@@ -5,6 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Data from '../../helpers/Date';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { View } from 'react-native';
 
 import {
   Container,
@@ -16,7 +17,8 @@ import {
   ButtonPhoto,
   ButtonText,
   Button,
-  ButtonPhotoText
+  ButtonPhotoText,
+  Photo
 } from './styles';
 
 import { Platform } from 'react-native';
@@ -31,6 +33,7 @@ export default class NewEvent extends Component {
     description: '',
     dateField: '',
     timeField: '',
+    newPhoto: false,
 
     where: { lat: null, lng: null },
     error: null,
@@ -44,7 +47,21 @@ export default class NewEvent extends Component {
   };
 
 
-  componentDidMount() {
+  async componentDidMount() {
+
+    const newEvent = JSON.parse(await AsyncStorage.getItem('newEvent'));
+
+    this.setState({
+      photo: newEvent.photo,
+      eventName: newEvent.eventName,
+      localName: newEvent.localName,
+      description: newEvent.description,
+      dateField: newEvent.dateField,
+      timeField: newEvent.timeField,
+      newPhoto: newEvent.newPhoto,
+    })
+
+
     const { navigation } = this.props;
     const local = navigation.getParam('local');
     if (local) {
@@ -56,16 +73,30 @@ export default class NewEvent extends Component {
       }
 
       Geolocation.setRNConfiguration(geoOptions);
-      Geolocation.getCurrentPosition(info => console.log(info));
+      Geolocation.getCurrentPosition(info =>
+        this.setState({
+          where: {
+            lng: info.coords.latitude,
+            lat: info.coords.longitude,
+          }
+        })
+      );
+
+
     } else {
 
     }
   }
 
-  async componentWillUnmount(){
+  async componentWillUnmount() {
     // console.log(this.state);
     // console.log(JSON.stringify(this.state));
-    await AsyncStorage.setItem('newEvent', JSON.stringify(this.state))
+    const newEvent = JSON.parse(await AsyncStorage.getItem('newEvent'));
+
+
+    await AsyncStorage.setItem('newEvent', JSON.stringify(this.state));
+    console.log('componentWillUnmount');
+    console.log(JSON.parse(await AsyncStorage.getItem('newEvent')))
   }
 
   geoSuccess = (position) => {
@@ -114,7 +145,12 @@ export default class NewEvent extends Component {
 
   render() {
 
-    const { photo, eventName, localName, description, show, date, mode, dateField, timeField} = this.state;
+    const { photo, eventName, localName, description, show, date, mode, dateField, timeField, newPhoto, where } = this.state;
+
+    console.log('photSte');
+    console.log(this.state)
+    console.log('phot');
+    console.log(photo);
 
     return (
       <Container>
@@ -123,6 +159,11 @@ export default class NewEvent extends Component {
           <Icon name="camera" size={60} color="#7159c1" />
           <ButtonPhotoText>Tirar Foto</ButtonPhotoText>
         </ButtonPhoto>
+
+        {/* <Photo source={{ uri: photo }} /> */}
+        {/* {newPhoto ? <Photo source={{ uri: photo }} /> : null} */}
+        {/* {newPhoto ?  <ButtonText>{photo}</ButtonText>: null} */}
+        {/* <ButtonText>--{photo}</ButtonText> */}
 
         <Box>
           <IconCont>
@@ -194,6 +235,14 @@ export default class NewEvent extends Component {
           display="default"
           onChange={this.setDate} />
         }
+
+        <Box>
+          <ButtonText>Latitude: {where.lat}</ButtonText>
+        </Box>
+        <Box>
+          <ButtonText>Longitude: {where.lng}</ButtonText>
+        </Box>
+
 
       </Container>
     );

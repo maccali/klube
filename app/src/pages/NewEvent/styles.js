@@ -3,7 +3,10 @@ import styled from 'styled-components/native';
 
 export const Container = styled.ScrollView`
   background-color: #fff;
-  padding: 30px;
+  /* top: -30px; */
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 export const Logo = styled.Image`
@@ -94,4 +97,8 @@ export const ButtonPhoto = styled.TouchableOpacity`
   padding: 20px;
   border: 1px solid #7159c1;
 `;
+
+export const Photo = styled.Image`
+
+`
 

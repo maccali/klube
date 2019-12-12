@@ -22,11 +22,18 @@ export default class Camera extends Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options)
-      alert(data.uri);
+
+      const event = JSON.parse(await AsyncStorage.getItem('newEvent'));
+      event.photo = data.uri
+      event.newPhoto = true
+      AsyncStorage.setItem('newEvent', JSON.stringify(event));
+      const eventPatho = JSON.parse(await AsyncStorage.getItem('newEvent'));
+
+      console.log('Incerido a imagem no evento')
+      console.log(eventPatho)
+
     }
 
-    const event = JSON.parse(await AsyncStorage.getItem('newEvent'));
-    console.log(event)
   }
 
   render() {

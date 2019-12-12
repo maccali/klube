@@ -15,7 +15,7 @@ export const ItemMenu = styled.TouchableOpacity`
   align-items: center;
   /* width: 150px; */
   width: 50%;
-  border-left-width: 1px;
+  /* border-left-width: 1px; */
   border-left-color: #fff;
 `
 
