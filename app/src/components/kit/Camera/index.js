@@ -12,11 +12,11 @@ import {
 export default class Camera extends Component {
 
   static navigationOptions = {
-    title: 'tire a caralha de uma foto',
+    title: 'Tire uma foto',
   };
 
   async componentDidMount() {
-    const event = await AsyncStorage.getItem('newEvent');
+    const event = JSON.parse(await AsyncStorage.getItem('newEvent'));
     console.log(event)
   }
 
@@ -26,6 +26,9 @@ export default class Camera extends Component {
       const data = await this.camera.takePictureAsync(options)
       alert(data.uri);
     }
+
+    const event = JSON.parse(await AsyncStorage.getItem('newEvent'));
+    console.log(event)
   }
 
   render() {

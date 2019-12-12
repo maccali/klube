@@ -18,7 +18,9 @@ import {
   FormInputMultiline,
   BoxPicker,
   ButtonPhoto,
-  ButtonText
+  ButtonText,
+  Button,
+  ButtonPhotoText
 } from './styles';
 
 import { Platform } from 'react-native';
@@ -110,6 +112,10 @@ export default class NewEvent extends Component {
     navigation.navigate('Camera');
   }
 
+  saveEvent = () => {
+
+  }
+
   render() {
 
     const { photo, eventName, localName, description, show, date, mode, dateField, timeField} = this.state;
@@ -119,7 +125,7 @@ export default class NewEvent extends Component {
 
         <ButtonPhoto onPress={() => this.cameraCall()}>
           <Icon name="camera" size={60} color="#7159c1" />
-          <ButtonText>Tirar Foto</ButtonText>
+          <ButtonPhotoText>Tirar Foto</ButtonPhotoText>
         </ButtonPhoto>
 
         <Box>
@@ -181,6 +187,10 @@ export default class NewEvent extends Component {
             onChangeText={textTimeField => this.setState({ timeField: textTimeField })}
           />
         </BoxPicker>
+
+        <Button onPress={() => this.saveEvent()}>
+          <ButtonText>Salvar Evento</ButtonText>
+        </Button>
 
         {show && <DateTimePicker value={date}
           mode={mode}

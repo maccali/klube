@@ -18,8 +18,16 @@ export const Button = styled.TouchableOpacity`
   background: #eee;
   border-radius: 50px;
   padding: 15px;
-  margin-top: 20px;
+  margin-top: 25px;
   border: 1px solid #7159c1;
+`;
+
+export const ButtonPhotoText = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #7159c1;
+  text-transform: uppercase;
+  margin-top: 15px;
 `;
 
 export const ButtonText = styled.Text`
@@ -27,7 +35,6 @@ export const ButtonText = styled.Text`
   font-weight: bold;
   color: #7159c1;
   text-transform: uppercase;
-  margin-top: 15px;
 `;
 
 export const Box = styled.View`
@@ -87,3 +94,4 @@ export const ButtonPhoto = styled.TouchableOpacity`
   padding: 20px;
   border: 1px solid #7159c1;
 `;
+
