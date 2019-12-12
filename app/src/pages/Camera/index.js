@@ -8,6 +8,10 @@ import {
 
 export default class CameraPage extends Component {
 
+  static navigationOptions = {
+    title: 'Tire uma foto',
+  };
+
   render() {
 
     return (

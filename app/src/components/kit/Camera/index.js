@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-
 import { RNCamera } from 'react-native-camera';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-
+import { StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {
-  CameraContainer
+  CameraContainer,
+  SnapView,
+  SnapTouchableOpacity,
+  SnapText,
 } from './styles'
 
 export default class Camera extends Component {
-
-  static navigationOptions = {
-    title: 'Tire uma foto',
-  };
 
   async componentDidMount() {
     const event = JSON.parse(await AsyncStorage.getItem('newEvent'));
@@ -43,11 +41,12 @@ export default class Camera extends Component {
           flashMode={RNCamera.Constants.FlashMode.off}
           captureAudio={false}
         />
-        <View>
-          <TouchableOpacity onPress={this.takePicture} >
-            <Text > SNAP </Text>
-          </TouchableOpacity>
-        </View>
+        <SnapView>
+          <SnapTouchableOpacity onPress={this.takePicture} >
+            <Icon name="camera" size={50} color="#7159c1" />
+
+          </SnapTouchableOpacity>
+        </SnapView>
       </CameraContainer>
     );
   }

@@ -4,11 +4,7 @@ import Geolocation from '@react-native-community/geolocation';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Data from '../../helpers/Date';
 import AsyncStorage from '@react-native-community/async-storage';
-
-
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Camera } from '../../components'
 
 import {
   Container,
